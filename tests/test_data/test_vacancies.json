@@ -1,0 +1,50 @@
+[
+  {"id": "1",
+   "name": "Бортпроводник",
+   "employer": {
+     "id": "1373"
+   },
+   "area": {
+     "name": "Москва"
+   },
+   "alternate_url": "https://hh.ru/vacancy/79324625"
+  },
+  {"id": "2",
+   "name": "Инженер",
+   "employer": {
+     "id": "1373"
+   },
+   "area": {
+     "name": "Казань"
+   },
+   "alternate_url": "https://hh.ru/vacancy/79324625",
+   "salary": {
+     "from": 1000,
+     "to": 50000
+   }
+  },
+  {"id": "3",
+   "name": "Специалист по продажам",
+   "employer": {
+     "id": "1373"
+   },
+   "area": {
+     "name": "Санкт-Петербург"
+   },
+   "alternate_url": "https://hh.ru/vacancy/79324625",
+   "salary": null
+  },
+  {"id": "4",
+   "name": "Регистратор",
+   "employer": {
+     "id": "1373"
+   },
+   "area": {
+     "name": "Санкт-Петербург"
+   },
+   "alternate_url": "https://hh.ru/vacancy/79324625",
+   "salary": {
+     "to": 50000
+   }
+  }
+]
