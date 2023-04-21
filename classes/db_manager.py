@@ -10,12 +10,12 @@ class DBManager:
 
     def create_database(self):
         """Создает базу данных и таблицы"""
-        try:
-            # Подключаемся к postgres, чтобы создать БД
-            conn = psycopg2.connect(dbname='postgres', **self.params)
-            conn.autocommit = True
-            cur = conn.cursor()
+        # Подключаемся к postgres, чтобы создать БД
+        conn = psycopg2.connect(dbname='postgres', **self.params)
+        conn.autocommit = True
+        cur = conn.cursor()
 
+        try:
             cur.execute(f"DROP DATABASE IF EXISTS {self.dbname}")
             cur.execute(f"CREATE DATABASE {self.dbname}")
 
@@ -33,9 +33,9 @@ class DBManager:
             cur.close()
             conn.close()
 
+        # Подключаемся к созданной БД и создаем таблицы
+        conn = psycopg2.connect(dbname=self.dbname, **self.params)
         try:
-            # Подключаемся к созданной БД и создаем таблицы
-            conn = psycopg2.connect(dbname=self.dbname, **self.params)
             with conn:
                 with conn.cursor() as cur:
                     cur.execute('CREATE TABLE IF NOT EXISTS employers '
@@ -56,9 +56,8 @@ class DBManager:
 
     def insert(self, table: str, data: list) -> None:
         """Добавление данных в базу данных в зависимости от таблицы"""
-
+        conn = psycopg2.connect(dbname=self.dbname, **self.params)
         try:
-            conn = psycopg2.connect(dbname=self.dbname, **self.params)
             with conn:
                 with conn.cursor() as cur:
                     if table == 'employers':
@@ -74,8 +73,8 @@ class DBManager:
 
     def _execute_query(self, query) -> list:
         """Возвращает результат запроса"""
+        conn = psycopg2.connect(dbname=self.dbname, **self.params)
         try:
-            conn = psycopg2.connect(dbname=self.dbname, **self.params)
             with conn:
                 with conn.cursor() as cur:
                     cur.execute(query)
