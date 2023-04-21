@@ -1,4 +1,5 @@
 import requests
+import time
 
 
 class HH:
@@ -63,6 +64,7 @@ class HH:
                     vacancies.append(self.get_info(vacancy))
 
             page += 1
+            time.sleep(0.2)
 
             # если была последняя страница, заканчиваем сбор данных
             if data.get('pages') == page:
