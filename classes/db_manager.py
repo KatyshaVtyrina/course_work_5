@@ -86,7 +86,7 @@ class DBManager:
 
         return result
 
-    def get_companies_and_vacancies_count(self):
+    def get_companies_and_vacancies_count(self) -> list:
         """Получает список всех компаний и количество вакансий у каждой компании"""
         result = self._execute_query("SELECT employer_name, COUNT(*) as quantity_vacancies "
                                      "FROM vacancies "
@@ -95,7 +95,7 @@ class DBManager:
                                      "ORDER BY quantity_vacancies DESC, employer_name")
         return result
 
-    def get_all_vacancies(self):
+    def get_all_vacancies(self) -> list:
         """ Получает список всех вакансий с указанием названия компании,
         названия вакансии и зарплаты и ссылки на вакансию"""
         result = self._execute_query("SELECT employers.employer_name, vacancy_name, salary, url "
@@ -105,13 +105,13 @@ class DBManager:
                                      "ORDER BY salary DESC, vacancy_name")
         return result
 
-    def get_avg_salary(self):
+    def get_avg_salary(self) -> list:
         """ Получает среднюю зарплату по вакансиям"""
         result = self._execute_query("SELECT ROUND(AVG(salary)) as average_salary "
                                      "FROM vacancies")
         return result
 
-    def get_vacancies_with_higher_salary(self):
+    def get_vacancies_with_higher_salary(self) -> list:
         """ Получает список всех вакансий, у которых зарплата выше средней по всем вакансиям"""
         result = self._execute_query("SELECT vacancy_name, salary "
                                      "FROM vacancies "
