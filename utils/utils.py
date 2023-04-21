@@ -1,7 +1,7 @@
 import json
 
 
-def read_json(file) -> dict:
+def read_json(file) -> list:
     """Читает json-файл"""
     with open(file) as f:
         data = json.load(f)
